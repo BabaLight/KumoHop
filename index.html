@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>KumoHop — Apps, Games & Experiments</title>
+
+  <meta
+    name="description"
+    content="KumoHop builds apps, games and experiments."
+  />
+
+  <style>
+    :root {
+	  --bg: #f7f7f5;
+      --surface: #ffffff;
+      --text: #171717;
+      --muted: #6b6b6b;
+      --border: #ddddda;
+      --accent: #171717;
+      --max-width: 1100px;
+	  
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin: auto;
+    }
+
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    nav {
+      height: 82px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .brand-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 680px;
+
+      display: flex;
+      align-items: center;
+
+      padding: 100px 0;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      color: var(--muted);
+
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+
+      margin-bottom: 30px;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+
+      background: var(--orange);
+      border-radius: 50%;
+    }
+
+    h1 {
+      margin: 0;
+
+      font-size: clamp(4rem, 10vw, 8.5rem);
+      line-height: 0.9;
+
+      letter-spacing: -0.075em;
+      font-weight: 700;
+    }
+
+    .hero-description {
+      max-width: 580px;
+
+      margin-top: 40px;
+
+      color: var(--muted);
+      font-size: 1.15rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+
+      margin-top: 38px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 13px 20px;
+
+      border: 1px solid var(--text);
+
+      font-size: 0.9rem;
+
+      transition: 0.2s ease;
+    }
+
+    .button.primary {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .button.primary:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+
+    .button.secondary {
+      border-color: var(--border);
+      color: var(--muted);
+    }
+
+    .button.secondary:hover {
+      border-color: var(--text);
+      color: var(--text);
+    }
+
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      padding: 110px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      margin-bottom: 50px;
+    }
+
+    h2 {
+      margin: 0;
+
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      letter-spacing: -0.06em;
+      line-height: 1;
+    }
+
+    .section-description {
+      max-width: 300px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+
+    /* =========================
+       PROJECTS
+    ========================= */
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+    }
+
+    .project {
+      min-height: 380px;
+
+      padding: 38px;
+
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+
+      display: flex;
+      flex-direction: column;
+
+      transition: background 0.2s ease;
+    }
+
+    .project:hover {
+      background: var(--surface-hover);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .project-number {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      color: var(--muted);
+
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .status::before {
+      content: "";
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+    }
+
+    .status.live::before {
+      background: #59c36a;
+    }
+
+    .status.progress::before {
+      background: var(--orange);
+    }
+
+    .status.idea::before {
+      background: var(--blue);
+    }
+
+    .project h3 {
+      margin: 55px 0 14px;
+
+      font-size: 2rem;
+      letter-spacing: -0.05em;
+    }
+
+    .project p {
+      margin: 0;
+
+      max-width: 440px;
+
+      color: var(--muted);
+    }
+
+    .project-footer {
+      margin-top: auto;
+      padding-top: 35px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .project-stat {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 18px;
+
+      font-size: 0.9rem;
+    }
+
+    .project-links a {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 3px;
+    }
+
+    .project-links a:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+
+    /* =========================
+       NAVPI FEATURE
+    ========================= */
+
+    .featured-project {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+
+      gap: 50px;
+
+      padding: 50px 0;
+
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .featured-label {
+      color: var(--muted);
+
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .featured-content h3 {
+      margin: 0 0 18px;
+
+      font-size: 3rem;
+      letter-spacing: -0.06em;
+    }
+
+    .featured-content p {
+      max-width: 680px;
+
+      margin-bottom: 28px;
+
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .text-link {
+      color: var(--text);
+      border-bottom: 1px solid var(--orange);
+      padding-bottom: 3px;
+    }
+
+    .text-link:hover {
+      color: var(--orange);
+    }
+
+
+    /* =========================
+       IDEAS
+    ========================= */
+
+    .idea-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 40px;
+
+      padding: 35px 0;
+
+      border-top: 1px solid var(--border);
+    }
+
+    .idea-row:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .idea-row h3 {
+      margin: 0 0 8px;
+
+      font-size: 1.8rem;
+      letter-spacing: -0.04em;
+    }
+
+    .idea-row p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-content {
+      max-width: 750px;
+    }
+
+    .about-content p {
+      color: var(--muted);
+
+      font-size: 1.45rem;
+      letter-spacing: -0.025em;
+    }
+
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact {
+      padding: 150px 0;
+    }
+
+    .contact h2 {
+      max-width: 900px;
+
+      font-size: clamp(3.5rem, 9vw, 7rem);
+    }
+
+    .contact-text {
+      margin-top: 35px;
+
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+
+      margin-top: 35px;
+    }
+
+    .contact-links a {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 5px;
+    }
+
+    .contact-links a:hover {
+      color: var(--orange);
+      border-color: var(--orange);
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 28px 0;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 750px) {
+
+      .container {
+        width: min(100% - 28px, var(--max-width));
+      }
+
+      nav {
+        height: 70px;
+      }
+
+      .nav-links {
+        gap: 15px;
+        font-size: 0.8rem;
+      }
+
+      .hero {
+        min-height: 600px;
+        padding: 70px 0;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .section-header {
+        display: block;
+      }
+
+      .section-description {
+        margin-top: 20px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project {
+        min-height: 350px;
+        padding: 28px;
+      }
+
+      .featured-project {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .featured-content h3 {
+        font-size: 2.5rem;
+      }
+
+      .idea-row {
+        display: block;
+      }
+
+      .idea-row .status {
+        margin-top: 20px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <div class="container">
+
+    <!-- Navigation -->
+
+    <nav>
+
+      <a href="#" class="brand">
+
+        <img src="logo.png" alt="KumoHop logo">
+
+        <span class="brand-name">
+          KumoHop
+        </span>
+
+      </a>
+
+
+      <div class="nav-links">
+
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+
+      </div>
+
+    </nav>
+
+
+    <main>
+
+
+      <!-- HERO -->
+
+      <section class="hero">
+
+        <div class="hero-content">
+
+          <div class="eyebrow">
+
+            <span class="eyebrow-dot"></span>
+
+            Independent project studio
+
+          </div>
+
+
+          <h1>
+            Apps.<br>
+            Games.<br>
+            Experiments.
+          </h1>
+
+
+          <p class="hero-description">
+
+            KumoHop is a collection of things worth building —
+            from useful apps and games to hardware experiments
+            and ideas that might become something bigger.
+
+          </p>
+
+
+          <div class="hero-actions">
+
+            <a href="#projects" class="button primary">
+              Explore projects
+            </a>
+
+            <a href="#about" class="button secondary">
+              About KumoHop
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- LIVE PROJECTS -->
+
+      <section id="projects">
+
+        <div class="section-header">
+
+          <h2>Projects</h2>
+
+          <p class="section-description">
+            Things that have escaped the idea stage.
+          </p>
+
+        </div>
+
+
+        <div class="project-grid">
+
+
+          <!-- TripTrack -->
+
+          <article class="project">
+
+            <div class="project-header">
+
+              <span class="project-number">01</span>
+
+              <span class="status live">
+                Live
+              </span>
+
+            </div>
+
+
+            <div>
+
+              <h3>TripTrack</h3>
+
+              <p>
+                A travel expense tracker for managing trip budgets,
+                recording expenses, splitting costs with friends
+                and keeping spending under control.
+              </p>
+
+            </div>
+
+
+            <div class="project-footer">
+
+              <span class="project-stat">
+                50+ active users
+              </span>
+
+
+              <div class="project-links">
+
+                <a
+                  href="https://triptrack.dpdns.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Website ↗
+                </a>
+
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.baba.triptrack"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Play Store ↗
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- CardOfSpice -->
+
+          <article class="project">
+
+            <div class="project-header">
+
+              <span class="project-number">02</span>
+
+              <span class="status live">
+                Live
+              </span>
+
+            </div>
+
+
+            <div>
+
+              <h3>CardOfSpice</h3>
+
+              <p>
+                A web project created around a simple idea and
+                developed into something people actively use.
+              </p>
+
+            </div>
+
+
+            <div class="project-footer">
+
+              <span class="project-stat">
+                100+ active users
+              </span>
+
+
+              <div class="project-links">
+
+                <a
+                  href="https://cardofspice.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit site ↗
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- Scoundrel -->
+
+          <article class="project">
+
+            <div class="project-header">
+
+              <span class="project-number">03</span>
+
+              <span class="status live">
+                Live
+              </span>
+
+            </div>
+
+
+            <div>
+
+              <h3>Scoundrel</h3>
+
+              <p>
+                A browser-based dungeon card game where every choice
+                matters. Fight monsters, manage your health and see
+                how far into the dungeon you can survive.
+              </p>
+
+            </div>
+
+
+            <div class="project-footer">
+
+              <span class="project-stat">
+                Browser game
+              </span>
+
+
+              <div class="project-links">
+
+                <a
+                  href="https://scoundrel-nine.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Play ↗
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- Zombie Hide & Seek -->
+
+          <article class="project">
+
+            <div class="project-header">
+
+              <span class="project-number">04</span>
+
+              <span class="status progress">
+                In progress
+              </span>
+
+            </div>
+
+
+            <div>
+
+              <h3>Zombie Hide & Seek</h3>
+
+              <p>
+                An upcoming game built around hiding, survival,
+                hunting and the risk of eventually joining the
+                zombie horde.
+              </p>
+
+            </div>
+
+
+            <div class="project-footer">
+
+              <span class="project-stat">
+                Currently being built
+              </span>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- NAVPI -->
+
+      <section>
+
+        <div class="section-header">
+
+          <h2>In progress</h2>
+
+          <p class="section-description">
+            Projects still taking shape.
+          </p>
+
+        </div>
+
+
+        <article class="featured-project">
+
+          <div class="featured-label">
+            Hardware + Software
+          </div>
+
+
+          <div class="featured-content">
+
+            <span class="status progress">
+              In development
+            </span>
+
+
+            <h3>NavPi</h3>
+
+
+            <p>
+
+              An experiment in building an in-car system using
+              a Raspberry Pi. A mix of hardware, touch interfaces,
+              automotive connectivity and a lot of trial and error.
+
+            </p>
+
+
+            <!-- Later you can create navpi.html -->
+
+            <a href="#" class="text-link">
+              Read the project story ↗
+            </a>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- IDEAS -->
+
+      <section>
+
+        <div class="section-header">
+
+          <h2>Ideas</h2>
+
+          <p class="section-description">
+            Not everything starts with code.
+          </p>
+
+        </div>
+
+
+        <div class="idea-row">
+
+          <div>
+
+            <h3>Rizzer</h3>
+
+            <p>
+              An idea still on the drawing board.
+            </p>
+
+          </div>
+
+
+          <span class="status idea">
+            Exploring
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <!-- ABOUT -->
+
+      <section id="about">
+
+        <div class="section-header">
+
+          <h2>About</h2>
+
+        </div>
+
+
+        <div class="about-content">
+
+          <p>
+            KumoHop is an independent space for building things.
+            Some projects start with a problem that needs solving.
+            Others start because an idea is interesting enough to try.
+          </p>
+
+          <p>
+            The result is a mix of apps, games, experiments and
+            occasional projects that probably seemed much easier
+            before they were started.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- CONTACT -->
+
+      <section id="contact" class="contact">
+
+        <h2>
+          Let's build<br>
+          something.
+        </h2>
+
+
+        <p class="contact-text">
+
+          Have a question, an idea, or just want to say hello?
+
+        </p>
+
+
+        <div class="contact-links">
+
+          <!-- Replace these with your actual links -->
+
+          <a href="mailto:dshubham1295@gmail.com">
+            Email ↗
+          </a>
+
+          <a href="https://github.com/BabaLight">
+            GitHub ↗
+          </a>
+
+          <a href="https://www.linkedin.com/in/dshubham1295/">
+            LinkedIn ↗
+          </a>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+      <div class="footer-content">
+
+        <span>
+          © 2026 KumoHop
+        </span>
+
+        <span>
+          Keep hopping.
+        </span>
+
+      </div>
+
+    </footer>
+
+  </div>
+
+</body>
+</html>
