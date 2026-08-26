@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>404 — Page Not Found | KumoHop</title>
+
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+
+  <meta
+    name="description"
+    content="The page you were looking for doesn't exist. Return to KumoHop."
+  />
+
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --surface: #ffffff;
+      --text: #171717;
+      --muted: #6b6b6b;
+      --border: #ddddda;
+      --accent: #171717;
+      --max-width: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    nav {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .brand-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* =========================
+       404 HERO / CONTENT
+    ========================= */
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .error-content {
+      max-width: 800px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      background: #ff5e3a;
+      border-radius: 50%;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(4rem, 11vw, 9rem);
+      line-height: 0.9;
+      letter-spacing: -0.075em;
+      font-weight: 700;
+    }
+
+    .error-description {
+      max-width: 540px;
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 1.15rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 38px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border: 1px solid var(--text);
+      font-size: 0.9rem;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .button.primary {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .button.primary:hover {
+      background: #333333;
+      border-color: #333333;
+    }
+
+    .button.secondary {
+      border-color: var(--border);
+      color: var(--muted);
+    }
+
+    .button.secondary:hover {
+      border-color: var(--text);
+      color: var(--text);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 750px) {
+      .container {
+        width: min(100% - 28px, var(--max-width));
+      }
+
+      nav {
+        height: 70px;
+      }
+
+      .nav-links {
+        gap: 15px;
+        font-size: 0.8rem;
+      }
+
+      main {
+        padding: 60px 0;
+      }
+
+      h1 {
+        font-size: clamp(3.5rem, 14vw, 5.5rem);
+      }
+
+      .error-description {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Navigation -->
+    <nav>
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="KumoHop logo">
+        <span class="brand-name">KumoHop</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Main 404 Content -->
+    <main>
+      <div class="error-content">
+
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Error 404 • Page Not Found
+        </div>
+
+        <h1>Lost in the<br>clouds.</h1>
+
+        <p class="error-description">
+          The page you are looking for doesn’t exist, was moved, or vanished into thin air.
+        </p>
+
+        <div class="actions">
+          <a href="index.html" class="button primary">
+            Back to Home
+          </a>
+          <a href="index.html#projects" class="button secondary">
+            Explore Projects
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <span>© 2026 KumoHop</span>
+        <span>Keep hopping.</span>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
