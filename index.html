@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
   <title>KumoHop — Apps, Games & Experiments</title>
 
@@ -19,18 +19,24 @@
 
   <style>
     :root {
-	  --bg: #f7f7f5;
+      --bg: #f7f7f5;
       --surface: #ffffff;
       --text: #171717;
       --muted: #6b6b6b;
       --border: #ddddda;
       --accent: #171717;
+      --orange: #ff5e3a;
+      --blue: #2563eb;
+      --surface-hover: #f0f0ed;
       --max-width: 1100px;
-	  
+      --safe-left: env(safe-area-inset-left, 0px);
+      --safe-right: env(safe-area-inset-right, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
 
     * {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html {
@@ -50,6 +56,17 @@
         sans-serif;
 
       line-height: 1.6;
+      overflow-x: hidden;
+      padding-left: var(--safe-left);
+      padding-right: var(--safe-right);
+      padding-bottom: var(--safe-bottom);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
     }
 
     a {
@@ -81,18 +98,21 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      min-width: 0;
     }
 
     .brand img {
       width: 60px;
       height: 60px;
       object-fit: contain;
+      flex-shrink: 0;
     }
 
     .brand-name {
       font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: -0.04em;
+      white-space: nowrap;
     }
 
     .nav-links {
@@ -101,6 +121,12 @@
 
       color: var(--muted);
       font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      padding: 6px 0;
+      white-space: nowrap;
+      transition: color 0.15s ease;
     }
 
     .nav-links a:hover {
@@ -150,11 +176,13 @@
     h1 {
       margin: 0;
 
-      font-size: clamp(4rem, 10vw, 8.5rem);
-      line-height: 0.9;
+      font-size: clamp(3.5rem, 9.5vw, 8.5rem);
+      line-height: 0.92;
 
       letter-spacing: -0.075em;
       font-weight: 700;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
 
     .hero-description {
@@ -192,9 +220,12 @@
       color: var(--bg);
     }
 
-    .button.primary:hover {
-      background: var(--orange);
-      border-color: var(--orange);
+    .button.primary:hover,
+    .button.primary:active,
+    .button.primary:focus {
+      background: #333333;
+      border-color: #333333;
+      color: var(--bg);
     }
 
     .button.secondary {
@@ -291,6 +322,7 @@
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
+      white-space: nowrap;
     }
 
     .status::before {
@@ -525,41 +557,104 @@
       flex-wrap: wrap;
     }
 
+    /* =========================
+       ANIMATIONS
+    ========================= */
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .fade-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+
+
 
     /* =========================
-       MOBILE
+       MOBILE & RESPONSIVE
     ========================= */
 
     @media (max-width: 750px) {
 
       .container {
-        width: min(100% - 28px, var(--max-width));
+        width: min(100% - 32px, var(--max-width));
       }
 
       nav {
-        height: 70px;
+        height: 66px;
+      }
+
+      .brand img {
+        width: 44px;
+        height: 44px;
+      }
+
+      .brand-name {
+        font-size: 1.05rem;
       }
 
       .nav-links {
-        gap: 15px;
-        font-size: 0.8rem;
+        gap: 16px;
+        font-size: 0.85rem;
+      }
+
+      .nav-links a {
+        padding: 8px 4px;
       }
 
       .hero {
-        min-height: 600px;
-        padding: 70px 0;
+        min-height: auto;
+        padding: 55px 0 45px;
+      }
+
+      .eyebrow {
+        margin-bottom: 20px;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 11vw, 4.2rem);
+        line-height: 0.96;
+        letter-spacing: -0.055em;
+      }
+
+      .hero-description {
+        margin-top: 22px;
+        font-size: 1.02rem;
+        line-height: 1.55;
+      }
+
+      .hero-actions {
+        margin-top: 28px;
+        gap: 12px;
       }
 
       section {
-        padding: 75px 0;
+        padding: 55px 0;
       }
 
       .section-header {
         display: block;
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 7.5vw, 2.75rem);
       }
 
       .section-description {
-        margin-top: 20px;
+        margin-top: 10px;
+        font-size: 0.88rem;
       }
 
       .project-grid {
@@ -567,25 +662,173 @@
       }
 
       .project {
-        min-height: 350px;
-        padding: 28px;
+        min-height: auto;
+        padding: 26px 22px;
+      }
+
+      .project h3 {
+        margin: 26px 0 12px;
+        font-size: 1.55rem;
+      }
+
+      .project p {
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+
+      .project-footer {
+        padding-top: 26px;
+        gap: 14px;
       }
 
       .featured-project {
         grid-template-columns: 1fr;
-        gap: 25px;
+        gap: 18px;
+        padding: 35px 0;
       }
 
       .featured-content h3 {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        margin: 12px 0 14px;
+      }
+
+      .featured-content p {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
       }
 
       .idea-row {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 22px 0;
       }
 
-      .idea-row .status {
+      .idea-row h3 {
+        font-size: 1.35rem;
+      }
+
+      .idea-row p {
+        font-size: 0.92rem;
+      }
+
+      .about-content p {
+        font-size: 1.15rem;
+        line-height: 1.6;
+      }
+
+      .contact {
+        padding: 60px 0;
+      }
+
+      .contact h2 {
+        font-size: clamp(2.3rem, 8vw, 3.8rem);
+        line-height: 1.0;
+      }
+
+      .contact-text {
         margin-top: 20px;
+        font-size: 1rem;
+      }
+
+      .contact-links {
+        gap: 16px 24px;
+        margin-top: 24px;
+      }
+
+      .contact-links a {
+        padding: 6px 0;
+        min-height: 36px;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      footer {
+        padding: 24px 0;
+      }
+
+      .footer-content {
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+        text-align: center;
+        padding: 13px 20px;
+      }
+
+      .project {
+        padding: 20px 16px;
+      }
+
+      .project h3 {
+        font-size: 1.4rem;
+        margin: 20px 0 10px;
+      }
+
+      .project-links {
+        gap: 14px;
+      }
+
+      .project-links a {
+        padding: 6px 0;
+      }
+
+      .featured-content h3 {
+        font-size: 1.7rem;
+      }
+
+      .about-content p {
+        font-size: 1.05rem;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 380px) {
+
+      .container {
+        width: min(100% - 24px, var(--max-width));
+      }
+
+      nav {
+        height: 60px;
+      }
+
+      .brand img {
+        width: 36px;
+        height: 36px;
+      }
+
+      .brand-name {
+        font-size: 0.95rem;
+      }
+
+      .nav-links {
+        gap: 10px;
+        font-size: 0.78rem;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 10vw, 2.6rem);
+      }
+
+      .button {
+        padding: 12px 16px;
+        font-size: 0.85rem;
       }
     }
 
@@ -632,7 +875,7 @@
 
         <div class="hero-content">
 
-          <div class="eyebrow">
+          <div class="eyebrow fade-up">
 
             <span class="eyebrow-dot"></span>
 
@@ -641,14 +884,14 @@
           </div>
 
 
-          <h1>
+          <h1 class="fade-up delay-1">
             Apps.<br>
             Games.<br>
             Experiments.
           </h1>
 
 
-          <p class="hero-description">
+          <p class="hero-description fade-up delay-2">
 
             KumoHop is a collection of things worth building —
             from useful apps and games to hardware experiments
@@ -657,7 +900,7 @@
           </p>
 
 
-          <div class="hero-actions">
+          <div class="hero-actions fade-up delay-3">
 
             <a href="#projects" class="button primary">
               Explore projects
@@ -678,7 +921,7 @@
 
       <section id="projects">
 
-        <div class="section-header">
+        <div class="section-header fade-up">
 
           <h2>Projects</h2>
 
@@ -694,7 +937,7 @@
 
           <!-- TripTrack -->
 
-          <article class="project">
+          <article class="project fade-up">
 
             <div class="project-header">
 
@@ -754,7 +997,7 @@
 
           <!-- CardOfSpice -->
 
-          <article class="project">
+          <article class="project fade-up">
 
             <div class="project-header">
 
@@ -805,7 +1048,7 @@
 
           <!-- Scoundrel -->
 
-          <article class="project">
+          <article class="project fade-up">
 
             <div class="project-header">
 
@@ -857,7 +1100,7 @@
 
           <!-- Zombie Hide & Seek -->
 
-          <article class="project">
+          <article class="project fade-up">
 
             <div class="project-header">
 
@@ -903,7 +1146,7 @@
 
       <section>
 
-        <div class="section-header">
+        <div class="section-header fade-up">
 
           <h2>In progress</h2>
 
@@ -914,7 +1157,7 @@
         </div>
 
 
-        <article class="featured-project">
+        <article class="featured-project fade-up">
 
           <div class="featured-label">
             Hardware + Software
@@ -957,7 +1200,7 @@
 
       <section>
 
-        <div class="section-header">
+        <div class="section-header fade-up">
 
           <h2>Ideas</h2>
 
@@ -968,7 +1211,7 @@
         </div>
 
 
-        <div class="idea-row">
+        <div class="idea-row fade-up">
 
           <div>
 
@@ -994,14 +1237,14 @@
 
       <section id="about">
 
-        <div class="section-header">
+        <div class="section-header fade-up">
 
           <h2>About</h2>
 
         </div>
 
 
-        <div class="about-content">
+        <div class="about-content fade-up delay-1">
 
           <p>
             KumoHop is an independent space for building things.
@@ -1024,32 +1267,44 @@
 
       <section id="contact" class="contact">
 
-        <h2>
+        <h2 class="fade-up">
           Let's build<br>
           something.
         </h2>
 
 
-        <p class="contact-text">
+        <p class="contact-text fade-up delay-1">
 
           Have a question, an idea, or just want to say hello?
 
         </p>
 
 
-        <div class="contact-links">
+        <div class="contact-links fade-up delay-2">
 
           <!-- Replace these with your actual links -->
 
-          <a href="mailto:dshubham1295@gmail.com">
+          <a
+            href="mailto:dshubham1295@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Email ↗
           </a>
 
-          <a href="https://github.com/BabaLight">
+          <a
+            href="https://github.com/BabaLight"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             GitHub ↗
           </a>
 
-          <a href="https://www.linkedin.com/in/dshubham1295/">
+          <a
+            href="https://www.linkedin.com/in/dshubham1295/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             LinkedIn ↗
           </a>
 
@@ -1080,5 +1335,27 @@
 
   </div>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-up').forEach(element => {
+        observer.observe(element);
+      });
+    });
+  </script>
 </body>
 </html>
